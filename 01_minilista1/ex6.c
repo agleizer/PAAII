@@ -12,8 +12,8 @@ Exemplo: Na sequência 7 9 5 4 5 4 8 6 existem i=3 e m=2.
 */
 
 bool segmentosIguais(int v[], int i1, int f1, int i2, int f2) {
-    int tam1 = f1 - i1;
-    int tam2 = f2 - i2;
+    int tam1 = f1 - i1 + 1;
+    int tam2 = f2 - i2 + 1;
     if (tam1 != tam2) {
         return false;
     }
@@ -22,13 +22,14 @@ bool segmentosIguais(int v[], int i1, int f1, int i2, int f2) {
             return false;
         }
     }
+    printf("Segmentos iguais encontrados!\n[%d, %d] e [%d, %d]\n", i1, f1, i2, f2);
     return true;
 }
 
 bool segmentosConsecutivos (int v[], int tam, int* i, int* m) {
-    for (int tamSeq = tam / 2; tamSeq > 0; tamSeq--) {
-        for (int buscaI = 0; buscaI + 2 * tamSeq <= tam; buscaI++) {
-            if (segmentosIguais(v, buscaI, buscaI+tamSeq - 1, buscaI+tamSeq, buscaI+2*tamSeq-1)) {
+    for (int tamSeq = tam / 2; tamSeq > 0; tamSeq--) { // sequencia nao pode ser maior que metade do tamanho, vamos desse valor ate 1
+        for (int buscaI = 0; buscaI + 2 * tamSeq <= tam; buscaI++) { // a cada iteracao, i vai de 0 ate o maior indice a partir do qual o tamSeq caberia no vetor
+            if (segmentosIguais(v, buscaI, buscaI+tamSeq - 1, buscaI+tamSeq, buscaI+2*tamSeq-1)) { // verificamos se as sequencias sao iguais. se sim, como comecamos pelas maiores, passamos os valor por ponteiro e retornamos
                 *i = buscaI;
                 *m = tamSeq;
                 return true;
@@ -49,6 +50,10 @@ int main() {
         printf("Informe o valor de v[%d]", j);
         scanf("%d", &v[j]);
     }
-    segmentosConsecutivos(v, tam, &i, &m);
-    printf("i = %d e m = %d\n", i, m);
+    if (segmentosConsecutivos(v, tam, &i, &m)) {
+        printf("i = %d e m = %d\n", i, m);
+    } else {
+        printf("Nenhum segmento consecutivo identificado\n");
+    }
+    
 }
