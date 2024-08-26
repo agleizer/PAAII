@@ -11,7 +11,7 @@ bool comparacaoLexicografica (int v1[], int v2[], int tam1, int tam2) {
 
     for (int i = 0; i < tamMenor; i++) {
         if (v1[i] > v2[i]) return true;
-        if (v1[i] > v2[i]) return false;
+        if (v1[i] < v2[i]) return false;
     }
 
     if (tam1 > tam2) return true;
