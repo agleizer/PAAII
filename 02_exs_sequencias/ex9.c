@@ -7,6 +7,14 @@ Qual é complexidade da sua função ?
 
 #include <stdio.h>
 
+void printArray(int array[], int size) {
+    printf("[ ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ",array[i]);
+    }
+    printf("]\n");
+}
+
 void sequenciaOrdenada(int v1[], int v2[], int n1, int n2, int v3[]) {
     int i = 0;
     int j = 0;
@@ -20,7 +28,9 @@ void sequenciaOrdenada(int v1[], int v2[], int n1, int n2, int v3[]) {
         }
     }
 
-    if (i < n1) v3[++k] = v1[i] 
+    // último elemento
+    if (i < n1) v3[k] = v1[i]; 
+    if (j < n2) v3[k] = v2[j]; 
 
 }
 
@@ -29,13 +39,12 @@ int main() {
     int v2[] = {2,4,6,8};
     int n1 = sizeof(v1)/sizeof(int);
     int n2 = sizeof(v2)/sizeof(int);
-    int n3 = n1+n2;
-    int v3[n3];
+    int v3[n1+n2];
 
     sequenciaOrdenada(v1, v2, n1, n2, v3);
 
-    for (int i = 0; i < n3; i++) {
-        printf("%d ", v3[i]);
-    }
+    printArray(v1, n1);
+    printArray(v2, n2);
+    printArray(v3, n1+n2);
 
 }
