@@ -12,31 +12,33 @@ saída: {1, 2, 3}, {1, 3, 2}, {2, 1, 3},
 void printArray(int array[], int size) {
     printf("[ ");
     for (int i = 0; i < size; i++) {
-        printf("%d ",array[i]);
+        printf("%d ", array[i]);
     }
     printf("]\n");
 }
 
-// apenas copiei a função de combinação por enquanto. ajustar para permutação
-int mostraSeqPermuta(int v[], int i, int s[], int tam) {
-    printf("chamada de mostraSeq com i = %d\n", i);
+// função para gerar permutações
+// inclusão de um vetor adicional para armazenar de determinado valor já foi utilizado
+// o indice é o valor, usado[indice] = 0 se usado, 1 se não usado
+void mostraSeqPermuta(int v[], int i, int s[], int tam, int usado[]) {
     if (i == tam) {
         printf("---> print de retorno: ");
         printArray(s, tam);
-    }
-    else {
+    } else {
         for (int j = 0; j < tam; j++) {
-            printf("no for loop. j = %d, i = %d\n", j, i);
-            s[i] = v[j];
-            printf("status: ");
-            printArray(s, tam);
-            mostraSeq(v, i+1, s, tam);
+            if (!usado[j]) { // checar se elemento foi usado
+                s[i] = v[j];
+                usado[j] = 1; // marcar como usado
+                mostraSeqPermuta(v, i + 1, s, tam, usado);
+                usado[j] = 0; // desmarcar como usado para a próxima iteração / permutação
+            }
         }
     }
 }
 
 int main() {
-    int v[] = {1,2,3};
-    int s[] = {99,99,99}; // 99 só p ter ctz que o codespaces estava limpando a memoria
-    mostraSeq(v, 0, s, 3);
+    int v[] = {1, 2, 3};
+    int s[] = {99, 99, 99};
+    int used[] = {0, 0, 0}; // vetor de usados começa com tudo não usado
+    mostraSeqPermuta(v, 0, s, 3, used);
 }
