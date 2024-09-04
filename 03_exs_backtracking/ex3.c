@@ -4,5 +4,5 @@ em que m e n são número de gols marcados por A e B, respectivamente. Escreva u
 algoritmo recursivo que imprima todas as possíveis sucessões de gols marcados. Por
 exemplo, para um placar final de 3 × 1, as possíveis sucessões de gols são “AAAB”,
 “AABA”, “ABAA” e “BAAA”.
-
 */
+

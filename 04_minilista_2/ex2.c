@@ -10,3 +10,4 @@ exceda 10. Nós iremos chamar este valor 10, de soma permutada elegante.
 Escreva uma função, usando Backtracking, que dado n inteiros encontre o valor da permutada
 elegante. 
 */
+
