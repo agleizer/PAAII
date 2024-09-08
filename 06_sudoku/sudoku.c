@@ -104,35 +104,37 @@ int resolverSudoku(int** v, int tamV, int linha, int coluna, int opcoes[], int t
 
 // Backtracking solver function
 int resolverSudoku(int** v, int tam, int linha, int coluna) {
-    // Find the next empty cell
+    // se chegamos no tamanho, então completamos a linha
     if (linha == tam) {
         // print2DArray(v, tam, tam);
-        return 1; // If reached beyond last row, Sudoku solved
+        return 1; // e podemos passar para a próxima
     }
 
     if (v[linha][coluna] != 0) {
-        // Move to next cell
+        // se o valor não for zero, a célula iniciou com valor e não pode ser alterada
         if (coluna == tam - 1) {
+            // se a célula fixa está na última posição, vamos para a próxima linha
             if (resolverSudoku(v, tam, linha + 1, 0)) return 1;
         } else {
+            // se não, vamos para a próxima ocluna da linha
             if (resolverSudoku(v, tam, linha, coluna + 1)) return 1;
         }
-        return 0; // Backtrack
+        return 0; // backtrack
     }
 
-    // Try all possible numbers
+    // testar todos os números de 1 a tamanho
     for (int num = 1; num <= tam; num++) {
         if (validaNumCelula(v, tam, linha, coluna, num)) {
             v[linha][coluna] = num;
             //print2DArray(v, tam, tam);
             if (resolverSudoku(v, tam, linha, coluna)) return 1;
-            v[linha][coluna] = 0; // Undo assignment (backtrack)
+            v[linha][coluna] = 0; // backtrack
             printf("backtrack...\n");
             //print2DArray(v, tam, tam);
         }
     }
 
-    return 0; // No valid number found, need to backtrack
+    return 0; // nenhum numero válido foi encontrado
 }
 
 int main() {
@@ -141,13 +143,11 @@ int main() {
     int rows = 4;
     int cols = 4;
 
-    // Allocate memory for the 2D array
     int** sudoku = (int**) malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++) {
         sudoku[i] = (int*) malloc(cols * sizeof(int));
     }
     
-    // Initialize the 2D array
     int initial_values[4][4] = {
         {0, 2, 4, 0},
         {1, 0, 0, 3},
@@ -174,7 +174,6 @@ int main() {
         printf("No solution exists.\n");
     }
 
-    // Free the allocated memory
     for (int i = 0; i < rows; i++) {
         free(sudoku[i]);
     }
