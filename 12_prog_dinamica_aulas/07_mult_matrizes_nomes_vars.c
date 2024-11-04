@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <limits.h>
+#include <locale.h>
 
 #define MAX_MATRIZES 100 // Define o tamanho máximo para as matrizes
 
@@ -59,6 +60,8 @@ void imprimir_parentizacao_otima(int inicio, int fim)
 // Função principal
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int numMatrizes;
 
     printf("Digite o número de matrizes: ");

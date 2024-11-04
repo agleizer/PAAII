@@ -1,4 +1,7 @@
+// complexidade O(n^2)
+
 #include <stdio.h>
+#include <locale.h>
 
 #define NAO_CALCULADO -1 // Define um valor para indicar que um índice ainda não foi calculado
 
@@ -65,6 +68,7 @@ int encontrar_subsequencia_crescente_mais_longa(int sequencia[], int tamanho)
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int tamanho;
 
     printf("Digite o tamanho da sequência: ");

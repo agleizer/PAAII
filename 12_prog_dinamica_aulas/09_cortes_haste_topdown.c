@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <limits.h>
+#include <locale.h>
 
 #define MAX 100 // Define o tamanho máximo para as hastes
 
@@ -38,6 +39,7 @@ int corte_haste(int precos[], int tamanho, int receitaMaxima[])
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n;
 
     printf("Digite o tamanho da haste: ");

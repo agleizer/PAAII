@@ -1,6 +1,7 @@
 // complexidade O(n^2)
 
 #include <stdio.h>
+#include <locale.h>
 
 // Define um valor para indicar que um índice ainda não foi calculado
 #define NAO_CALCULADO -1
@@ -18,6 +19,7 @@ int max(int a, int b)
 // Função recursiva para calcular a LIS até o índice i
 int LIS(int i)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     // Passo 1: Verifica se L[i] já foi calculado
     if (L[i] != NAO_CALCULADO)
     {

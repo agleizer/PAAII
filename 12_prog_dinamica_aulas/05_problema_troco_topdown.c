@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <limits.h>
+#include <locale.h>
 
 #define MAX 1000 // Definindo um limite máximo para o valor de T
 
@@ -55,6 +56,7 @@ int conta_moedas(int T, int n)
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n, T;
 
     printf("Digite o número de tipos de moedas: ");

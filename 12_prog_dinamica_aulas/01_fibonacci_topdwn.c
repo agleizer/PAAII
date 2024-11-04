@@ -1,6 +1,7 @@
 // complexidade O(n)
 
 #include <stdio.h>
+#include <locale.h>
 
 // Define o tamanho máximo para a sequência de Fibonacci
 #define MAX 100
@@ -40,6 +41,7 @@ int fib(int n)
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n;
 
     printf("Digite o valor de n: ");

@@ -1,6 +1,7 @@
 // complexidade O(n)
 
 #include <stdio.h>
+#include <locale.h>
 
 // Função para calcular o n-ésimo número de Fibonacci usando a abordagem bottom-up
 int fib(int n)
@@ -24,6 +25,7 @@ int fib(int n)
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n;
 
     printf("Digite o valor de n: ");

@@ -1,6 +1,7 @@
 // complexidade O(n^2)
 
 #include <stdio.h>
+#include <locale.h>
 
 #define MAX 1000
 
@@ -46,6 +47,7 @@ int subsequencia_crescente_mais_longa(int num[], int n)
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n;
 
     printf("Digite o tamanho do array: ");

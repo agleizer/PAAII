@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 
 #define MAX 100 // Define o tamanho máximo para as sequências
 
@@ -70,6 +71,7 @@ void recuperar_LCS(char direcaoLCS[MAX][MAX], char X[], int i, int j)
 // Função principal
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     char X[MAX], Y[MAX];
     int m, n;
 
