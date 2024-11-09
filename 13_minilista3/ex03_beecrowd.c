@@ -39,8 +39,6 @@ Saída
 
 // OBS: varição da sublista contínua de elementos que produz a soma máxima
 
-#include <stdio.h>
-
 int maximoVidas(int vidas[], int n)
 {
    int maxSomaAtual = vidas[0]; // Armazena a soma máxima que estamos calculando

@@ -32,42 +32,34 @@ int verificarSubsequencia(char *seq, char *subseq, int seqLen, int subLen)
     return j == subLen;
 }
 
-// Função para encontrar a LCS por força bruta
+// Função principal para encontrar a LCS por força bruta
 int lcsForcaBruta(char *X, char *Y)
 {
     int maxLen = 0;
     int xLen = strlen(X), yLen = strlen(Y);
 
-    // Testa todas as subsequências possíveis de X
-    for (int i = 0; i < (1 << xLen); i++)
-    {
-        char subseq[xLen + 1];
-        int subLen = 0;
+    // Array temporário para armazenar subsequências de X
+    char subseq[xLen + 1];
 
-        // Gera uma subsequência de X com bits
-        for (int j = 0; j < xLen; j++)
-        {
-            if (i & (1 << j))
-            {
-                subseq[subLen++] = X[j];
-            }
-        }
-        subseq[subLen] = '\0';
+    // Gera todas as subsequências de X
+    for (int len = 1; len <= xLen; len++)
+    { // Tamanho da subsequência
+        for (int start = 0; start <= xLen - len; start++)
+        { // Posição inicial
+            // Copia o trecho de X para subseq
+            strncpy(subseq, &X[start], len);
+            subseq[len] = '\0'; // Finaliza a string
 
-        // Verifica se a subsequência está contida em Y e atualiza o comprimento máximo
-        if (verificarSubsequencia(Y, subseq, yLen, subLen))
-        {
-            if (subLen > maxLen)
+            // Verifica se subseq é subsequência de Y
+            if (verificarSubsequencia(Y, subseq, yLen, len) && len > maxLen)
             {
-                maxLen = subLen;
+                maxLen = len; // Atualiza o comprimento máximo
             }
         }
     }
+
     return maxLen;
 }
-
-#include <stdio.h>
-#include <string.h>
 
 // Função para calcular a LCS usando programação dinâmica
 int lcsDP(char *X, char *Y)

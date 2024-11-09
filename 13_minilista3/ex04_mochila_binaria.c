@@ -11,8 +11,6 @@ up).
 #include <stdlib.h>
 #include <string.h>
 
-#include <stdio.h>
-
 // Função recursiva de backtracking para resolver o problema da mochila
 int mochilaRecursiva(int capacidade, int pesos[], int valores[], int n)
 {
@@ -35,8 +33,6 @@ int mochilaRecursiva(int capacidade, int pesos[], int valores[], int n)
         return (incluir > naoIncluir) ? incluir : naoIncluir;
     }
 }
-
-#include <stdio.h>
 
 // Função de programação dinâmica para resolver o problema da mochila (bottom-up)
 int mochilaPD(int capacidade, int pesos[], int valores[], int n)
